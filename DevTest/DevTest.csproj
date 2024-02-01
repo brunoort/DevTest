@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Views\Login\" />
+    <None Remove="Services\" />
+    <None Remove="Shared\" />
+    <None Remove="Interfaces\" />
+    <None Remove="Models\Response\" />
+    <None Remove="Views\Author\" />
+    <None Remove="Views\Book\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\Login\" />
+    <Folder Include="Services\" />
+    <Folder Include="Shared\" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="Models\Response\" />
+    <Folder Include="Views\Author\" />
+    <Folder Include="Views\Book\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="RestSharp" Version="110.2.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="Views\Login\Success.cshtml" />
+    <Content Remove="Views\Author\Shared\Menu.cshtml" />
+  </ItemGroup>
+</Project>

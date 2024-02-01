@@ -1,0 +1,70 @@
+﻿@using DevTest.Models.Response;
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Dev Test</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+
+<body class="container">
+
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" style="padding:10pt">
+        <a class="navbar-brand" href="#">DS - DevTest</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+
+        @Html.Partial("menu")
+
+    </nav>
+
+    <main role="main">
+        <h2>Authors</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">First</th>
+                    <th scope="col">Last</th>
+                    <th scope="col">Email</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    if (ViewData["Authors"] != null)
+                        if (ViewData.Values != null && ViewData.Values.Count() > 0)
+                        {
+                            var rowNo = 0;
+                            @foreach (var item in ViewData["Authors"] as List<AuthorListResponse>)
+                            {
+                                <tr>
+                                    <th>@(rowNo += 1) </th>
+                                    <td>@Html.DisplayFor(modelItem => item.firstName)   </td>
+                                    <td>@Html.DisplayFor(modelItem => item.lastName)  </td>
+                                    <td>@Html.DisplayFor(modelItem => item.eamil)  </td>
+                                    <td>
+                                        @Html.ActionLink("Edit", "Edit", "Author", new { id = item.id }, null)
+                                    </td>
+                                </tr>
+                            }
+                        }
+                }
+            </tbody>
+        </table>
+
+        <div>
+            <a href="@Url.Action("Create", "Author")" class="btn btn-primary">New Author</a>
+        </div>
+    </main>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>
